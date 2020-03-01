@@ -11,6 +11,11 @@
 |
 */
 
+/**
+ * Artisan Commands Routes
+ */
+include 'cmd.php';
+
 //Route::get('/', function () {
 //    return view('welcome');
 //});
