@@ -20,7 +20,6 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index')->name('admin');
 Route::get('/home', 'IndexController@home')->name('home');
 
 
@@ -57,29 +56,8 @@ Route::post('dynamic_dependent/multiply', 'SaleController@fetch')->name('dynamic
 
 
 
-
-
-
-//Admin
-Route::get('/admin/product-list','ProductController@adminProductList')->name('product-list');
-
-
-Route::get('/admin/add-btype','BtypeController@addBtype')->name('add-btype');
-Route::post('/admin/save-btype','BtypeController@saveBtype')->name('save-btype');
-Route::get('/admin/view-btype','BtypeController@viewBtype')->name('view-btype');
-Route::get('/admin/btype/published/{id}', 'BtypeController@publishedBtype')->name('published-btype');
-Route::get('/admin/btype/unpublished/{id}', 'BtypeController@unpublishedBtype')->name('unpublished-btype');
-Route::post('/admin/btype/update-btype', 'BtypeController@updateBtype')->name('update-btype');
-Route::get('/admin/btype/delete-btype/{id}', 'BtypeController@deleteBtype')->name('delete-btype');
-
-
-Route::get('/admin/add-product-category','CategoryController@addProductCategory')->name('add-product-category');
-Route::post('/admin/save-product-category','CategoryController@saveProductCategory')->name('save-category');
-Route::get('/admin/view-product-category','CategoryController@viewProductCategory')->name('view-product-category');
-Route::get('/admin/product-category/published/{id}', 'CategoryController@publishedProductCategory')->name('published-category');
-Route::get('/admin/product-category/unpublished/{id}', 'CategoryController@unpublishedProductCategory')->name('unpublished-category');
-Route::post('/admin/update-product-category', 'CategoryController@updateProductCategory')->name('update-category');
-Route::get('/admin/delete-product-category/{id}', 'CategoryController@deleteProductCategory')->name('delete-category');
-
-
+    /**
+     * Admin related routes
+     */
+    include 'admin.php';
 });
