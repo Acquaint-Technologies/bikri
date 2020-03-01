@@ -12,7 +12,7 @@
     <meta name="author" content="SW-THEMES">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset('/public/public')}}/assets/images/icons/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{{asset('public/assets/images/icons/favicon.ico')}}">
 
     <script type="text/javascript">
         WebFontConfig = {
@@ -20,7 +20,7 @@
         };
         (function(d) {
             var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = '{{asset('/public/public')}}/assets/js/webfont.js';
+            wf.src = '{{asset('public/assets/js/webfont.js')}}';
             wf.async = true;
             s.parentNode.insertBefore(wf, s);
         })(document);
@@ -32,18 +32,18 @@
         };
         (function(d) {
             var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = '{{asset('/public/public')}}/assets/js/webfont.js';
+            wf.src = '{{asset('public/assets/js/webfont.js')}}';
             wf.async = true;
             s.parentNode.insertBefore(wf, s);
         })(document);
     </script>
 
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="{{asset('/public/public')}}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('public/assets/css/bootstrap.min.css')}}">
 
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="{{asset('/public/public')}}/assets/css/style.min.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('/public/public')}}/assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('public/assets/css/style.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/assets/vendor/fontawesome-free/css/all.min.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 
@@ -136,12 +136,12 @@
 <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 
 <!-- Plugins JS File -->
-<script src="{{asset('/public/public')}}/assets/js/jquery.min.js"></script>
-<script src="{{asset('/public/public')}}/assets/js/bootstrap.bundle.min.js"></script>
-<script src="{{asset('/public/public')}}/assets/js/plugins.min.js"></script>
+<script src="{{asset('public/assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('public/assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('public/assets/js/plugins.min.js')}}"></script>
 
 <!-- Main JS File -->
-<script src="{{asset('/public/public')}}/assets/js/main.min.js"></script>
+<script src="{{asset('public/assets/js/main.min.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>

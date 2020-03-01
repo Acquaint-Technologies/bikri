@@ -17,7 +17,7 @@
                 <?php }?>
 
                 <a href="home.php" class="logo" style="display:none;">
-                    <img src="{{asset('public/public')}}/assets/images/logo.png" alt="Porto Logo">
+                    <img src="{{asset('public/assets/images/logo.png')}}" alt="Porto Logo">
                 </a>
                 <h1>BIKRI</h1>
 
