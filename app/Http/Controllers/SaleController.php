@@ -93,10 +93,10 @@ class SaleController extends Controller
     public function viewSale()
     {
         $val = Session::get('ownerId');
-        $sales = DB::table('sales')
-            ->where('owner_id',$val)
+        $sales = Sale::with('product')
+            ->where('owner_id', $val)
             ->get();
-        return view('public.sale.view-sale',['sales'=>$sales]);
+        return view('public.sale.view-sale', compact('sales'));
     }
 
 
