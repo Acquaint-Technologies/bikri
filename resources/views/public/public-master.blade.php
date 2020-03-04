@@ -38,6 +38,8 @@
         })(document);
     </script>
 
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="{{asset('public/assets/css/bootstrap.min.css')}}">
 
@@ -134,6 +136,8 @@
 </div>
 
 <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
+
+<script src="{{asset('js/app.js')}}"></script>
 
 <!-- Plugins JS File -->
 <script src="{{asset('public/assets/js/jquery.min.js')}}"></script>
