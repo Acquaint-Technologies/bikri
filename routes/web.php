@@ -59,7 +59,9 @@ Route::get('/delete-sale/{id}', 'SaleController@deleteSale')->name('delete-sale'
 Route::post('/multiply','SaleController@multiplyValue')->name('multiply');
 Route::post('dynamic_dependent/multiply', 'SaleController@fetch')->name('dynamicdependent.fetch');
 
-
+Route::group(['namespace' => 'FrontEndCon'], function () {
+    Route::get('subscription-payments', 'SubscriptionPaymentController@index')->name('subscription-payments.index');
+});
 
     /**
      * Admin related routes

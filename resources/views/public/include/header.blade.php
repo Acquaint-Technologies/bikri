@@ -4,22 +4,19 @@
             <div class="header-left">
 
                 <?php if(session()->has('ownerId')) { ?>
-
-                <button class="mobile-menu-toggler" type="button">
-                    <i class="icon-menu"></i>
-                </button>
-            <?php } else { ?>
-
+                    <button class="mobile-menu-toggler" type="button">
+                        <i class="icon-menu"></i>
+                    </button>
+                <?php } else { ?>
                     <button class="mobile-menu-toggler" type="button" disabled="">
                         <i class="icon-menu" hidden disabled=""></i>
                     </button>
-<!--                 --><?php //return redirect('/') ?>
                 <?php }?>
 
                 <a href="home.php" class="logo" style="display:none;">
                     <img src="{{asset('public/assets/images/logo.png')}}" alt="Porto Logo">
                 </a>
-                <h1>BIKRI</h1>
+                <h1>{{ config('app.name') }}</h1>
 
                 <nav class="main-nav">
                     <ul class="menu">
@@ -41,16 +38,18 @@
                                 <li><a href="{{route('view-sale')}}">Sales List</a></li>
                             </ul>
                         </li>
+                        <li class="sf-with-ul">
+                            <a href="#">Subscription Fee</a>
+                            <ul>
+                                <li><a href="{{ route('subscription-payments.index') }}">Subscription Payments</a></li>
+                                <li><a href="#">Pending Subscription</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div><!-- End .header-left -->
 
             <div class="header-right">
-
-
-
-
-
                 <div class="header-search">
 {{--                    <a href="#" class="search-toggle" role="button"><i class="icon-search-3"></i></a>--}}
                     <form action="#" method="get">
@@ -71,7 +70,6 @@
 {{--                <a href="#" class="porto-icon"><i class="icon icon-wishlist-2"></i></a>--}}
 
                 <div class="header-user">
-
                     <?php if(session()->has('ownerId')) { ?>
                     <a href=""><strong><h2 class=" icon-user-2 icon-3x"></h2></strong></a>
                     <a href="{{route('lets change')}}"><h3 class="text-right">{{Session::get('ownerName')}}</h3></a>
@@ -80,19 +78,15 @@
 {{--                        </button>--}}
 
 {{--                        <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">--}}
-                        <a  href="{{route('owner-logout')}}"><p>&nbsp; (Logout)</p></a>
+                    <a  href="{{route('owner-logout')}}"><p>&nbsp; (Logout)</p></a>
 {{--                        </div>--}}
-                        <?php } else { ?>
-                        <a href=""><strong><h2 class=" icon-user-2 icon-3x"></h2></strong></a>
-                        <a href="{{route('/')}}">(Please Login First)</a>
-                        <?php }?>
-                    </div>
-                    <hr>
-
-
+                    <?php } else { ?>
+                    <a href=""><strong><h2 class=" icon-user-2 icon-3x"></h2></strong></a>
+                    <a href="{{route('/')}}">(Please Login First)</a>
+                    <?php }?>
                 </div>
-
+                <hr>
             </div><!-- End .header-right -->
         </div><!-- End .container-fluid -->
-    </div><!-- End .header-middle -->
+    </div>
 </header>
