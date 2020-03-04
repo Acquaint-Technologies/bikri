@@ -61,10 +61,16 @@ Route::post('dynamic_dependent/multiply', 'SaleController@fetch')->name('dynamic
 
 Route::group(['namespace' => 'FrontEndCon'], function () {
     Route::get('subscription-payments', 'SubscriptionPaymentController@index')->name('subscription-payments.index');
+    Route::post('subscription-payments', 'SubscriptionPaymentController@store')->name('subscription-payments.store');
 });
 
     /**
      * Admin related routes
      */
     include 'admin.php';
+
+    /**
+     * JSON Response routes
+     */
+    include 'json.php';
 });

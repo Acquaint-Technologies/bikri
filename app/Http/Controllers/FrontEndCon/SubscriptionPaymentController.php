@@ -21,4 +21,9 @@ class SubscriptionPaymentController extends Controller
         $controllerInfo = $this->controllerInfo;
         return view('public.subscription.payment-index', compact('controllerInfo'));
     }
+
+    public function store(Request $request)
+    {
+        //
+    }
 }
