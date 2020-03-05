@@ -12,6 +12,13 @@
 */
 
 Route::group(['prefix' => 'administrator'], function () {
+    Route::group(['as' => 'admin.', 'namespace' => 'BackEndCon'], function () {
+        // Admin Authentication Routes...
+        Route::get('login', 'Auth\AdminLoginController@showLoginForm')->name('login');
+        Route::post('login', 'Auth\AdminLoginController@login');
+        Route::post('logout', 'Auth\AdminLoginController@logout')->name('logout');
+    });
+
     Route::get('/', 'HomeController@index')->name('admin');
 
     Route::get('/product-list', 'ProductController@adminProductList')->name('product-list');
