@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,13 +55,14 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::post('subscription-payments', 'SubscriptionPaymentController@store')->name('subscription-payments.store');
     });
 
-    /**
-     * Admin related routes
-     */
-    include 'admin.php';
-
-    /**
-     * JSON Response routes
-     */
-    include 'json.php';
 });
+
+/**
+ * Admin related routes
+ */
+include 'admin.php';
+
+/**
+ * JSON Response routes
+ */
+include 'json.php';
