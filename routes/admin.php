@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'secure'], function () {
+Route::group(['prefix' => 'administrator'], function () {
     Route::get('/', 'HomeController@index')->name('admin');
 
     Route::get('/product-list', 'ProductController@adminProductList')->name('product-list');
