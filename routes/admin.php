@@ -20,7 +20,7 @@ Route::group(['prefix' => 'administrator'], function () {
     });
 
     // Routes with auth:admin guard
-    Route::group(['middleware' => 'auth:admin'], function () {
+    Route::group(['middleware' => 'auth:admin', 'namespace' => 'BackEndCon'], function () {
         Route::get('/', 'HomeController@index')->name('admin');
 
         Route::get('/product-list', 'ProductController@adminProductList')->name('product-list');
