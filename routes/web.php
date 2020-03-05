@@ -16,9 +16,9 @@
  */
 include 'cmd.php';
 
-Route::group(['middleware' => 'prevent-back-history'], function () {
+Auth::routes();
 
-    Auth::routes();
+Route::group(['middleware' => 'prevent-back-history', 'namespace' => 'FrontEndCon'], function () {
 
     Route::get('/home', 'IndexController@home')->name('home');
 
@@ -50,10 +50,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/multiply', 'SaleController@multiplyValue')->name('multiply');
     Route::post('dynamic_dependent/multiply', 'SaleController@fetch')->name('dynamicdependent.fetch');
 
-    Route::group(['namespace' => 'FrontEndCon'], function () {
-        Route::get('subscription-payments', 'SubscriptionPaymentController@index')->name('subscription-payments.index');
-        Route::post('subscription-payments', 'SubscriptionPaymentController@store')->name('subscription-payments.store');
-    });
+    Route::get('subscription-payments', 'SubscriptionPaymentController@index')->name('subscription-payments.index');
+    Route::post('subscription-payments', 'SubscriptionPaymentController@store')->name('subscription-payments.store');
 
 });
 

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FrontEndCon;
 
+use App\Http\Controllers\Controller;
 use App\Owner;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
