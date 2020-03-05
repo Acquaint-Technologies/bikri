@@ -23,28 +23,29 @@
                         <li>
                             <a href="{{route('home')}}">Home</a>
                         </li>
-
-                        <li class="sf-with-ul">
-                            <a href="#">Product List</a>
-                            <ul>
-                                <li><a href="{{route('add-product')}}">Add Product</a></li>
-                                <li><a href="{{route('view-product')}}">Product List</a></li>
-                            </ul>
-                        </li>
-                        <li class="sf-with-ul">
-                            <a href="#">Sales List</a>
-                            <ul>
-                                <li><a href="{{route('add-sale')}}">Add Sales</a></li>
-                                <li><a href="{{route('view-sale')}}">Sales List</a></li>
-                            </ul>
-                        </li>
-                        <li class="sf-with-ul">
-                            <a href="#">Subscription Fee</a>
-                            <ul>
-                                <li><a href="{{ route('subscription-payments.index') }}">Subscription Payments</a></li>
-                                <li><a href="#">Pending Subscription</a></li>
-                            </ul>
-                        </li>
+                        @if (Session::has('ownerId'))
+                            <li class="sf-with-ul">
+                                <a href="#">Product List</a>
+                                <ul>
+                                    <li><a href="{{route('add-product')}}">Add Product</a></li>
+                                    <li><a href="{{route('view-product')}}">Product List</a></li>
+                                </ul>
+                            </li>
+                            <li class="sf-with-ul">
+                                <a href="#">Sales List</a>
+                                <ul>
+                                    <li><a href="{{route('add-sale')}}">Add Sales</a></li>
+                                    <li><a href="{{route('view-sale')}}">Sales List</a></li>
+                                </ul>
+                            </li>
+                            <li class="sf-with-ul">
+                                <a href="#">Subscription Fee</a>
+                                <ul>
+                                    <li><a href="{{ route('subscription-payments.index') }}">Subscription Payments</a></li>
+                                    <li><a href="#">Pending Subscription</a></li>
+                                </ul>
+                            </li>
+                        @endif
                     </ul>
                 </nav>
             </div><!-- End .header-left -->
