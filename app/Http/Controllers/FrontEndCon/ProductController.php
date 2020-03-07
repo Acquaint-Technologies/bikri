@@ -7,6 +7,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -37,57 +38,35 @@ class ProductController extends Controller
 
     public function viewProduct()
     {
-        $products = DB::table('products')
-            ->where('owner_id', Auth::id())
-            ->get();
-
+        $products = Product::where('user_id', Auth::id())->get();
         return view('public.product.view-product', compact('products'));
     }
 
     public function updateProduct(Request $request)
     {
-        $product = Product::find($request->id);
-        $product->product_name = $request->product_name;
-//        $product->product_type = $request->product_type;
-        $product->sale_price = $request->sale_price;
-        $product->product_cost = $request->product_cost;
-        $product->save();
-
-
-        return redirect('/view-product')->with('message', 'Product updated successfully');
-//        $categoryImage = $request->file('cat_image');
-
-//        if ($categoryImage)
-//        {
-//            unlink($product category->cat_image);
-//            $imageName = $categoryImage->getClientOriginalName();
-//            $directory ='public/admin/product category-images/';
-//            $imageUrl = $directory.$imageName;
-//            $categoryImage->move($directory, $imageName);
-//
-//
-//
-//            $product category->cat_name = $request->cat_name;
-//            $product category->cat_desc = $request->cat_desc;
-//            $product category->cat_image = $imageUrl;
-//            $product category->save();
-//        }
-//        else
-//        {
-//            $product category->cat_name = $request->cat_name;
-//            $product category->cat_desc = $request->cat_desc;
-//            $product category->save();
-//        }
-
-//        return redirect('/product category/manage')->with('message','Category updated successfully');
+        $data = array(
+            'product_name' => $request->product_name,
+            'product_cost' => $request->product_cost,
+            'sale_price' => $request->sale_price,
+        );
+        $updated = Product::find($request->id)->update($data);
+        if ($updated) {
+            Session::flash('message', 'Product updated Successfully');
+        } else {
+            Session::flash('message', 'Whoops! Failed to add product');
+        }
+        return redirect('/view-product');
     }
 
     public function deleteProduct($id)
     {
         $product = Product::find($id);
-        $product->delete();
-
-        return redirect('/view-product')->with('message', 'Product deleted successfully');
-
+        $destroy = $product->delete();
+        if ($destroy) {
+            Session::flash('message', 'Product deleted Successfully');
+        } else {
+            Session::flash('message', 'Whoops! Product not deleted');
+        }
+        return redirect('/view-product');
     }
 }
