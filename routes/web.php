@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'FrontEndCon'], function 
 
     Route::get('subscription-payments', 'SubscriptionPaymentController@index')->name('subscription-payments.index');
     Route::post('subscription-payments', 'SubscriptionPaymentController@store')->name('subscription-payments.store');
+    Route::get('subscription-payments/pending', 'SubscriptionPaymentController@pendingSubscriptions')->name('subscription-payments.pending');
 
 });
 

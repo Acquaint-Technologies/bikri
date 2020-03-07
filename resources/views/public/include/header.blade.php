@@ -40,10 +40,10 @@
                                 </ul>
                             </li>
                             <li class="sf-with-ul">
-                                <a href="#">Subscription Fee</a>
+                                <a href="">Subscription Fee</a>
                                 <ul>
                                     <li><a href="{{ route('subscription-payments.index') }}">Subscription Payments</a></li>
-                                    <li><a href="#">Pending Subscription</a></li>
+                                    <li><a href="{{ route('subscription-payments.pending') }}">Pending Subscription</a></li>
                                 </ul>
                             </li>
                         @endguest

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FrontEndCon;
 use App\Services\Payment\Gateways\BkashPaymentGateway;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -32,7 +33,7 @@ class SubscriptionPaymentController extends Controller
         $payment = new BkashPaymentGateway();
         $chargedAmount = $payment->charge($currentFee->fee * (int)$request->no_of_months);
         $subscription = DB::table('subscription_payments')->insert([
-            'owner_id' => Session::get('ownerId'),
+            'user_id' => Auth::id(),
             'no_of_month' => $request->no_of_months,
             'paid_amount' => $chargedAmount,
             'transaction_id' => $request->transaction_id,
@@ -45,5 +46,16 @@ class SubscriptionPaymentController extends Controller
             Session::flash('alert-class', 'alert-success');
         }
         return redirect()->route('subscription-payments.index');
+    }
+
+    public function pendingSubscriptions()
+    {
+        $this->controllerInfo->pageTitle = 'Pending Subscription';
+        $controllerInfo = $this->controllerInfo;
+        $payments = DB::table('subscription_payments')->where([
+            'user_id' => Auth::id(),
+            'status' => 0,
+        ])->get();
+        return view('public.subscription.pending', compact('controllerInfo', 'payments'));
     }
 }
