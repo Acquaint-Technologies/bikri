@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function adminProductList()
     {
-        $products = Product::all();
+        $products = Product::with(['user'])->get();
         return view('admin.product list.view-product', ['products' => $products]);
     }
 }

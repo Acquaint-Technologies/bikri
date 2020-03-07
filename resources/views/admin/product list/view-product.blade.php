@@ -29,7 +29,7 @@
             @foreach($products as $product)
                 <tr>
                     <th scope="row">{{$i++}}</th>
-                    <td>{{$product->owner_id}}</td>
+                    <td>{{$product->user->name}}</td>
                     <td>{{$product->product_name}}</td>
 
 {{--                    <td><img src="{{asset($product->main_image)}}" alt="" class="img-fluid img-thumbnail" width="100px" ></td>--}}
