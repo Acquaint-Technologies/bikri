@@ -40,5 +40,7 @@ Route::group(['prefix' => 'administrator'], function () {
         Route::get('/product-category/unpublished/{id}', 'CategoryController@unpublishedProductCategory')->name('unpublished-category');
         Route::post('/update-product-category', 'CategoryController@updateProductCategory')->name('update-category');
         Route::get('/delete-product-category/{id}', 'CategoryController@deleteProductCategory')->name('delete-category');
+
+        Route::resource('/owners', 'UserController');
     });
 });

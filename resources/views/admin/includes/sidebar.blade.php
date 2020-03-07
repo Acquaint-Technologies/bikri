@@ -80,9 +80,8 @@
         </a>
         <div id="two" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-
-                <a class="collapse-item" href="">Add New Shop Owner</a>
-                <a class="collapse-item" href="">View Shop Owners</a>
+                <a class="collapse-item" href="{{ route('owners.create') }}">Add New Shop Owner</a>
+                <a class="collapse-item" href="{{ route('owners.index') }}">View Shop Owners</a>
             </div>
         </div>
     </li>
