@@ -14,12 +14,12 @@ class CreateSalesTable extends Migration
     public function up()
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('owner_id');
-            $table->foreign('owner_id')->references('id')->on('owners');
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
-            $table->double('product_cost');
+            $table->decimal('product_cost', 10, 2);
             $table->timestamps();
         });
     }

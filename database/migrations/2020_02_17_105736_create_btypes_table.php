@@ -14,10 +14,10 @@ class CreateBtypesTable extends Migration
     public function up()
     {
         Schema::create('btypes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->text('business_name');
+            $table->id();
+            $table->string('business_name');
             $table->text('business_desc');
-            $table->integer('status')->default(1);
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
