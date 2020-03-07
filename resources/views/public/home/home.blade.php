@@ -20,11 +20,7 @@
         <div class="container">
             <div class="row">
 
-
-
-
                 <!--add new sale condition-->
-                <?php if(session()->has('ownerId')) { ?>
                 <div class="col-md-4">
                     <a href="{{route('add-sale')}}">
                         <div class="jumbotron jumbotron-fluid">
@@ -35,23 +31,8 @@
                         </div>
                     </a>
                 </div>
-                    <?php } else { ?>
-                    <div class="col-md-4">
-                        <a href="{{route('/')}}">
-                            <div class="jumbotron jumbotron-fluid">
-                                <div class="container">
-                                    <h1>Add New Sales</h1>
-                                    <p class="lead">Horrey! New Sale in</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <?php }?>
-
-
 
                 <!--add new product condition-->
-                <?php if(session()->has('ownerId')) { ?>
                 <div class="col-md-4">
                     <a href="{{route('add-product')}}">
                         <div class="jumbotron jumbotron-fluid">
@@ -62,24 +43,8 @@
                         </div>
                     </a>
                 </div>
-                <?php } else { ?>
-                <div class="col-md-4">
-                    <a href="{{route('/')}}">
-                        <div class="jumbotron jumbotron-fluid">
-                            <div class="container">
-                                <h1>Add New Product</h1>
-                                <p class="lead">Add product to your list</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <?php }?>
-
-
-
 
                 <!--view sales condition-->
-                <?php if(session()->has('ownerId')) { ?>
                 <div class="col-md-4">
                     <a href="{{route('view-sale')}}">
                         <div class="jumbotron jumbotron-fluid">
@@ -90,24 +55,8 @@
                         </div>
                     </a>
                 </div>
-                <?php } else { ?>
-                <div class="col-md-4">
-                    <a href="{{route('/')}}">
-                        <div class="jumbotron jumbotron-fluid">
-                            <div class="container">
-                                <h1>Sales List</h1>
-                                <p class="lead">Total 30 sales created</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <?php }?>
-
-
-
 
                 <!--view product list condition-->
-                <?php if(session()->has('ownerId')) { ?>
                 <div class="col-md-4">
                     <a href="{{route('view-product')}}">
                         <div class="jumbotron jumbotron-fluid">
@@ -118,20 +67,6 @@
                         </div>
                     </a>
                 </div>
-                <?php } else { ?>
-                <div class="col-md-4">
-                    <a href="{{route('/')}}">
-                        <div class="jumbotron jumbotron-fluid">
-                            <div class="container">
-                                <h1>Product List</h1>
-                                <p class="lead">Total 20 products available</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <?php }?>
-
-
 
             </div>
         </div>
@@ -152,12 +87,12 @@
                 </tr>
 
                 @foreach($sales as $sale)
-                <tr>
-                    <td>{{$sale->product_name}}</td>
-                    <td>{{$sale->quantity}}</td>
-                    <td>{{$sale->product_cost}}</td>
-                </tr>
-                    @endforeach
+                    <tr>
+                        <td>{{$sale->product_name}}</td>
+                        <td>{{$sale->quantity}}</td>
+                        <td>{{$sale->product_cost}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
 

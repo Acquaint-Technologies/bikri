@@ -20,14 +20,8 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth'], 'namespace' => 'FrontEndCon'], function () {
 
+    Route::get('/', 'IndexController@home')->name('root');
     Route::get('/home', 'IndexController@home')->name('home');
-
-
-    Route::get('/', 'OwnerController@login')->name('/');
-    Route::get('/owner-registration', 'OwnerController@registration')->name('owner-register');
-    Route::post('/save-register', 'OwnerController@saveRegister')->name('save-register');
-    Route::post('/Owner-login', 'OwnerController@saveLogin')->name('save-login');
-    Route::get('/Owner-logout', 'OwnerController@logOut')->name('owner-logout');
 
     Route::get('change-password', 'ChangePasswordController@index')->name('lets change');
     Route::post('change', 'ChangePasswordController@store')->name('change.password');

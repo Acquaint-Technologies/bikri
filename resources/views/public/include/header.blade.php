@@ -74,7 +74,7 @@
                 <div class="header-user">
                     @guest
                         <a href=""><strong><h2 class=" icon-user-2 icon-3x"></h2></strong></a>
-                        <a href="{{route('/')}}">(Please Login First)</a>
+                        <a href="{{route('login')}}">(Please Login First)</a>
                     @else
                         <a href=""><strong><h2 class=" icon-user-2 icon-3x"></h2></strong></a>
                         <a href="{{route('lets change')}}"><h3 class="text-right">{{ Auth::user()->name }}</h3></a>
