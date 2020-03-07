@@ -10,25 +10,25 @@
                 </button>
             </div>
         @endif
-        <h1>View Product</h1>
+        <h1>All Users</h1>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th scope="col">Serial</th>
-                <th scope="col">Owner Id</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Sale Price (BDT)</th>
-                <th scope="col">Product Cost (BDT)</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Business Type</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($products as $key => $product)
+            @foreach($users as $key => $user)
                 <tr>
                     <th scope="row">{{ $key += 1 }}</th>
-                    <td>{{$product->user->name}}</td>
-                    <td>{{$product->product_name}}</td>
-                    <td>{{$product->sale_price}}</td>
-                    <td>{{$product->product_cost}}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->businessType->business_name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->phone }}</td>
                 </tr>
             @endforeach
             </tbody>
