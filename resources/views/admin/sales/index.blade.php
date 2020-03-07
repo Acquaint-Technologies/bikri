@@ -16,19 +16,19 @@
             <tr>
                 <th scope="col">Serial</th>
                 <th scope="col">User Name</th>
-                <th scope="col">Business Type</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone Number</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Product Cost</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($users as $key => $user)
+            @foreach($sales as $key => $sale)
                 <tr>
                     <th scope="row">{{ $key += 1 }}</th>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->businessType->business_name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->phone }}</td>
+                    <td>{{ $sale->user->name }}</td>
+                    <td>{{ $sale->product->product_name }}</td>
+                    <td>{{ $sale->quantity }}</td>
+                    <td>{{ $sale->product_cost }}</td>
                 </tr>
             @endforeach
             </tbody>

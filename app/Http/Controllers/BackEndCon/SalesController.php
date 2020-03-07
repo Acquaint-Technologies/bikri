@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\BackEndCon;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Sale;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class SalesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with(['businessType'])->get();
-        return view('admin.owners.index', compact('users'));
+        $sales = Sale::with(['product', 'user'])->get();
+        return view('admin.sales.index', compact('sales'));
     }
 
     /**
@@ -26,13 +26,13 @@ class UserController extends Controller
      */
     public function create()
     {
-        echo "Create Form to add an Owner";
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,30 +43,30 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        echo "Owner $id details";
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        echo "Edit an owner information";
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -77,7 +77,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
