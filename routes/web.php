@@ -18,7 +18,7 @@ include 'cmd.php';
 
 Auth::routes();
 
-Route::group(['middleware' => 'prevent-back-history', 'namespace' => 'FrontEndCon'], function () {
+Route::group(['middleware' => ['auth'], 'namespace' => 'FrontEndCon'], function () {
 
     Route::get('/home', 'IndexController@home')->name('home');
 

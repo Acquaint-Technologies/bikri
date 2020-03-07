@@ -3,15 +3,15 @@
         <div class="container-fluid">
             <div class="header-left">
 
-                <?php if(session()->has('ownerId')) { ?>
-                    <button class="mobile-menu-toggler" type="button">
-                        <i class="icon-menu"></i>
-                    </button>
-                <?php } else { ?>
+                @guest
                     <button class="mobile-menu-toggler" type="button" disabled="">
                         <i class="icon-menu" hidden disabled=""></i>
                     </button>
-                <?php }?>
+                @else
+                    <button class="mobile-menu-toggler" type="button">
+                        <i class="icon-menu"></i>
+                    </button>
+                @endguest
 
                 <a href="home.php" class="logo" style="display:none;">
                     <img src="{{asset('public/assets/images/logo.png')}}" alt="Porto Logo">
@@ -23,7 +23,8 @@
                         <li>
                             <a href="{{route('home')}}">Home</a>
                         </li>
-                        @if (Session::has('ownerId'))
+                        @guest
+                        @else
                             <li class="sf-with-ul">
                                 <a href="#">Product List</a>
                                 <ul>
@@ -45,7 +46,7 @@
                                     <li><a href="#">Pending Subscription</a></li>
                                 </ul>
                             </li>
-                        @endif
+                        @endguest
                     </ul>
                 </nav>
             </div><!-- End .header-left -->
@@ -71,20 +72,17 @@
 {{--                <a href="#" class="porto-icon"><i class="icon icon-wishlist-2"></i></a>--}}
 
                 <div class="header-user">
-                    <?php if(session()->has('ownerId')) { ?>
-                    <a href=""><strong><h2 class=" icon-user-2 icon-3x"></h2></strong></a>
-                    <a href="{{route('lets change')}}"><h3 class="text-right">{{Session::get('ownerName')}}</h3></a>
-{{--                    <div class="dropdown">--}}
-{{--                        <button  class="btn btn-sm dropdown-toggle btn-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                        </button>--}}
-
-{{--                        <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">--}}
-                    <a  href="{{route('owner-logout')}}"><p>&nbsp; (Logout)</p></a>
-{{--                        </div>--}}
-                    <?php } else { ?>
-                    <a href=""><strong><h2 class=" icon-user-2 icon-3x"></h2></strong></a>
-                    <a href="{{route('/')}}">(Please Login First)</a>
-                    <?php }?>
+                    @guest
+                        <a href=""><strong><h2 class=" icon-user-2 icon-3x"></h2></strong></a>
+                        <a href="{{route('/')}}">(Please Login First)</a>
+                    @else
+                        <a href=""><strong><h2 class=" icon-user-2 icon-3x"></h2></strong></a>
+                        <a href="{{route('lets change')}}"><h3 class="text-right">{{ Auth::user()->name }}</h3></a>
+                        <a  href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><p>({{ __('Logout') }})</p></a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endguest
                 </div>
                 <hr>
             </div><!-- End .header-right -->
