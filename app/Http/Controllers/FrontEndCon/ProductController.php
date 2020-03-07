@@ -67,7 +67,6 @@ class ProductController extends Controller
         return view('public.product.view-product',['products'=>$products]);
     }
 
-
     public function updateProduct(Request $request)
     {
         $product= Product::find($request->id);
@@ -106,7 +105,6 @@ class ProductController extends Controller
 //        return redirect('/product category/manage')->with('message','Category updated successfully');
     }
 
-
     public function deleteProduct($id)
     {
         $product= Product::find($id);
@@ -115,21 +113,4 @@ class ProductController extends Controller
         return redirect('/view-product')->with('message','Product deleted successfully');
 
     }
-
-
-
-
-
-
-
-
-
-    //Admin Site//
-
-    public function adminProductList()
-    {
-        $products=Product::all();
-        return view('admin.product list.view-product',['products'=>$products]);
-    }
-
 }

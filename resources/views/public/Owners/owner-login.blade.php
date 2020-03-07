@@ -25,17 +25,17 @@
                         <p>If you have an account with us, please log in.</p>
                     </div><!-- End .heading -->
 
-                    <form action="{{route('save-login')}}" method="post" enctype="multipart/form-data" >
+                    <form action="{{route('login')}}" method="post" enctype="multipart/form-data" >
                         @csrf
-                        <input type="email" name="owner_email" class="form-control" placeholder="Email Address" required>
-                        <input type="password" name="owner_password" class="form-control" placeholder="Password" required>
+                        <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
                         <h3 class="text-danger">{{Session::get('message')}}</h3>
 
                         <div class="form-footer">
                             <button type="submit" name="btn" class="btn btn-primary">LOGIN</button>
                             <a href="forgot-password.php" class="forget-pass"> Forgot your password?</a>
                         </div><!-- End .form-footer -->
-                        Dont have a account yet! <a href="{{route('owner-register')}}" class="forget-pass"><strong> Register Now</strong></a>
+                        Dont have a account yet! <a href="{{route('register')}}" class="forget-pass"><strong> Register Now</strong></a>
                     </form>
                 </div><!-- End .col-md-6 -->
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\FrontEndCon;
+namespace App\Http\Controllers\BackEndCon;
 
 use App\Category;
 use App\Http\Controllers\Controller;
