@@ -6,54 +6,33 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
 use DB;
 
 class ProductController extends Controller
 {
     public function addProduct()
     {
-
-
-        $value = Session::get('OwnerBusinessType');
-
         $categories = DB::table('categories')
-          //  ->join('btypes','categories.cat_btype_id' ,'=', 'btypes.id')
-           // ->join('owners','categories.cat_btype_id' ,'=', 'owners.business_type')
-            ->where('categories.cat_btype_id',$value)
+            ->where('categories.btype_id', Auth::user()->business_type)
             ->get();
-       // dd($categories);
-
-//        $categories=Category::where(session('btypeId'))->get();
-        return view('public.product.add-product',['categories'=>$categories]);
+        return view('public.product.add-product', compact('categories'));
     }
 
     public function saveProduct(Request $request)
     {
-//           Product::create($request->all());
-
-        $product = new Product();
-//        $product->product_type = Session::get('catName');
-        $product->product_name = $request->product_name;
-        $product->sale_price = $request->sale_price;
-        $product->product_cost = $request->product_cost;
-        $product->owner_id = Session::get('ownerId');
-        if ($request->session()->has('ownerId')) {
-            $product->cat_id = $request->product_type;
-            $product->save();
-            return redirect('/add-product')->with('message','product added successfully') ;
-        }
-        else
-        {
+        $data = array(
+            'user_id' => Auth::id(),
+            'category_id' => $request->product_type,
+            'product_name' => $request->product_name,
+            'product_cost' => $request->product_cost,
+            'sale_price' => $request->sale_price,
+        );
+        $product = Product::create($data);
+        if ($product) {
+            return redirect('/add-product')->with('message', 'Product added successfully');
+        } else {
             return redirect('/');
         }
-
-
-        Session::put('productName',$product->product_name);
-        Session::put('productId',$product->id);
-        Session::put('salePrice',$product->sale_price);
-
-
     }
 
     public function viewProduct()
@@ -67,7 +46,7 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
-        $product= Product::find($request->id);
+        $product = Product::find($request->id);
         $product->product_name = $request->product_name;
 //        $product->product_type = $request->product_type;
         $product->sale_price = $request->sale_price;
@@ -75,7 +54,7 @@ class ProductController extends Controller
         $product->save();
 
 
-        return redirect('/view-product')->with('message','Product updated successfully');
+        return redirect('/view-product')->with('message', 'Product updated successfully');
 //        $categoryImage = $request->file('cat_image');
 
 //        if ($categoryImage)
@@ -105,10 +84,10 @@ class ProductController extends Controller
 
     public function deleteProduct($id)
     {
-        $product= Product::find($id);
+        $product = Product::find($id);
         $product->delete();
 
-        return redirect('/view-product')->with('message','Product deleted successfully');
+        return redirect('/view-product')->with('message', 'Product deleted successfully');
 
     }
 }
