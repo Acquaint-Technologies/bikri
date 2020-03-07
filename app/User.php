@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Btype::class, 'business_type', 'id');
     }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
 }

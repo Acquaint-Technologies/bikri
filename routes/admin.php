@@ -42,5 +42,6 @@ Route::group(['prefix' => 'administrator'], function () {
         Route::get('/delete-product-category/{id}', 'CategoryController@deleteProductCategory')->name('delete-category');
 
         Route::resource('/owners', 'UserController');
+        Route::resource('/sales','SalesController');
     });
 });
