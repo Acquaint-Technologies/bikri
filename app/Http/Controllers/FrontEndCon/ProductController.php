@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\FrontEndCon;
 
-use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use DB;
 
@@ -58,13 +58,11 @@ class ProductController extends Controller
 
     public function viewProduct()
     {
-//        $products=Product::all();
-        $val = Session::get('ownerId');
         $products = DB::table('products')
-            ->where('owner_id',$val)
+            ->where('owner_id', Auth::id())
             ->get();
 
-        return view('public.product.view-product',['products'=>$products]);
+        return view('public.product.view-product', compact('products'));
     }
 
     public function updateProduct(Request $request)

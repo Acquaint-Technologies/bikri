@@ -3,26 +3,13 @@
 namespace App\Http\Controllers\FrontEndCon;
 
 use App\Http\Controllers\Controller;
-use App\Owner;
+use App\User;
 use Illuminate\Http\Request;
-use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use DB;
-use Session;
-//use App\User;
 
 class ChangePasswordController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
-
     /**
      * Show the application dashboard.
      *
@@ -45,16 +32,7 @@ class ChangePasswordController extends Controller
             'new_password' => 'required',
             'new_confirm_password' => 'same:new_password',
         ]);
-
-//        $val = Session::get('ownerId');
-//       $change= DB::table('owners')
-//            ->where('id',$val)
-//            ->get('id');
-
-
-       Owner::find(Session::get('ownerId'))->update(['owner_password'=> Hash::make($request->new_password)]);
-//        Owner::find('id')->update(['owner_password'=> Hash::make($request->new_password)]);
-        return redirect('/home')->with('message','your password has changed successfully') ;
-//        dd('Password change successfully.');
+        User::find(Auth::id())->update(['password' => Hash::make($request->new_password)]);
+        return redirect('/home')->with('message', 'your password has changed successfully');
     }
 }

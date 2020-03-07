@@ -5,15 +5,14 @@ namespace App\Http\Controllers\FrontEndCon;
 use App\Http\Controllers\Controller;
 use App\Sale;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
     public function home()
     {
-        $val = Session::get('ownerId');
-        $sales = Sale::orderBy('id','DESC')->take(4)->where('owner_id',$val)->get();
-        return view('public.home.home',['sales'=>$sales]);
+        $sales = Sale::orderBy('id', 'DESC')->take(4)->where('user_id', Auth::id())->get();
+        return view('public.home.home', ['sales' => $sales]);
     }
 
 }

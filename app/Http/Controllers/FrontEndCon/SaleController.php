@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FrontEndCon;
 use App\Http\Controllers\Controller;
 use App\Sale;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use DB;
 
@@ -12,13 +13,10 @@ class SaleController extends Controller
 {
     public function addSale()
     {
-        $value = Session::get('ownerId');
-
-
         $products = DB::table('products')
             //  ->join('btypes','categories.cat_btype_id' ,'=', 'btypes.id')
             // ->join('owners','categories.cat_btype_id' ,'=', 'owners.business_type')
-            ->where('products.owner_id',$value)
+            ->where('products.user_id', Auth::id())
             ->get();
         return view('public.sale.add-sale',['products'=>$products]);
     }
@@ -68,7 +66,7 @@ class SaleController extends Controller
         $sale = new Sale();
 //        $sale->product_name = $request->product_name;
         $sale->sales_product_id = $request->product_name;
-        $sale->owner_id = Session::get('ownerId');
+        $sale->user_id = Auth::id();
 
         if ($request->session()->has('ownerId')) {
 
@@ -93,9 +91,8 @@ class SaleController extends Controller
 
     public function viewSale()
     {
-        $val = Session::get('ownerId');
         $sales = Sale::with('product')
-            ->where('owner_id', $val)
+            ->where('user_id', Auth::id())
             ->get();
         return view('public.sale.view-sale', compact('sales'));
     }
