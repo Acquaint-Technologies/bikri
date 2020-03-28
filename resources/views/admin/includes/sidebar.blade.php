@@ -96,7 +96,7 @@
         </a>
         <div id="three" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">View Sales List</a>
+                <a class="collapse-item" href="{{route('sales.index') }}">View Sales List</a>
             </div>
         </div>
     </li>

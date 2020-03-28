@@ -21,7 +21,7 @@
                         </button>
                     </div>
                 @endif
-{{--                <h3 style="color: green" >{{Session::get('message')}}</h3>--}}
+                {{--                <h3 style="color: green" >{{Session::get('message')}}</h3>--}}
                 <h1>Add New Sale</h1>
             </div><!-- End .container -->
         </div><!-- End .page-header -->
@@ -35,26 +35,28 @@
 
                     <form action="{{route('save-sale')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <select class="form-control" name="product_name" id="product" >
+                        <select class="form-control" name="product_id" id="product">
                             <option value="">- Select Product -</option>
                             @foreach($products as $product)
                                 <option value="{{$product->id}}">{{$product->product_name}}</option>
                             @endforeach
                         </select>
 
-                        <input type="number" class="form-control" name="quantity" placeholder="Quantity" value="1" id="qty" data-dependent="price">
+                        <input type="number" class="form-control" name="quantity" placeholder="Quantity" value="1"
+                               id="qty" data-dependent="price">
 
-                        <input type="number" class="form-control" name="sales_total" value="$mul" placeholder="Total sales cost" id="price">
+                        <input type="number" class="form-control" name="sales_total" value="$mul"
+                               placeholder="Total sales cost" id="price">
 
-{{--                        <select class="form-control" name="product_cost" id="product">--}}
-{{--                            <option value="">- Sales Total Price -</option>--}}
-{{--                            @foreach($products as $product)--}}
-{{--                                <option value="{{$product->sales_total}}">{{$product->sale_price}} ({{$product->product_name}})</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
+                        {{--                        <select class="form-control" name="product_cost" id="product">--}}
+                        {{--                            <option value="">- Sales Total Price -</option>--}}
+                        {{--                            @foreach($products as $product)--}}
+                        {{--                                <option value="{{$product->sales_total}}">{{$product->sale_price}} ({{$product->product_name}})</option>--}}
+                        {{--                            @endforeach--}}
+                        {{--                        </select>--}}
 
                         <div class="form-footer">
-                            <button type="submit" name="btn" class="btn btn-primary">Add Sale</button>
+                            <button type="submit" class="btn btn-primary">Add Sale</button>
                         </div><!-- End .form-footer -->
                     </form>
                 </div><!-- End .col-md-6 -->
@@ -65,33 +67,31 @@
     </main><!-- End .main -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-{{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />--}}
+    {{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />--}}
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
 
-            $('.dynamic').change(function(){
-                if($(this).val() != '')
-                {
+            $('.dynamic').change(function () {
+                if ($(this).val() != '') {
                     var select = $(this).attr("id");
                     var value = $(this).val();
                     var dependent = $(this).data('dependent');
                     var _token = $('input[name="_token"]').val();
                     $.ajax({
-                        url:"{{ route('dynamicdependent.fetch') }}",
-                        method:"POST",
-                        data:{select:select, value:value, _token:_token, dependent:dependent},
-                        success:function(result)
-                        {
-                            $('#'+dependent).html(result);
+                        url: "{{ route('dynamicdependent.fetch') }}",
+                        method: "POST",
+                        data: {select: select, value: value, _token: _token, dependent: dependent},
+                        success: function (result) {
+                            $('#' + dependent).html(result);
                         }
 
                     })
                 }
             });
 
-            $('#qty').change(function(){
+            $('#qty').change(function () {
                 $('#price').val('');
             });
             {{--$(function () {--}}

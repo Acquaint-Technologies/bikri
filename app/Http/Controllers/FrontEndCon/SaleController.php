@@ -38,25 +38,21 @@ class SaleController extends Controller
 
     public function saveSale(Request $request)
     {
-        $sale = new Sale();
-//        $sale->product_name = $request->product_name;
-        $sale->sales_product_id = $request->product_name;
-        $sale->user_id = Auth::id();
-
-        if ($request->session()->has('ownerId')) {
-
-            $sale->quantity = $request->quantity;
-            $cost = $request->sales_total;
-            $sale->sales_total = $request->quantity * $cost;
-//        $qty = $request->quantity;
-//        $cost = $request->product_cost;
-//        $total = $qty*$cost;
-//        $sale->$total;
-            $sale->save();
-            return redirect('/add-sale')->with('message', 'sale added successfully');
+        $data = array(
+            'user_id' => Auth::id(),
+            'product_id' => $request->product_id,
+            'quantity' => $request->quantity,
+            'product_cost' => $request->sales_total,
+        );
+        $sale = Sale::create($data);
+        if ($sale) {
+            Session::flash('message', 'sale added successfully');
+            Session::flash('alert-class', 'alert-success');
         } else {
-            return redirect('/');
+            Session::flash('message', "Whoops! Failed to add Sale");
+            Session::flash('alert-class', 'alert-danger');
         }
+        return redirect()->route('add-sale');
     }
 
     public function viewSale()
