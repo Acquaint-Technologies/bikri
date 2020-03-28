@@ -16,7 +16,7 @@ class ProductController extends Controller
         $categories = DB::table('categories')
             ->where('categories.btype_id', Auth::user()->business_type)
             ->get();
-        return view('public.product.add-product', compact('categories'));
+        return view('user.product.add-product', compact('categories'));
     }
 
     public function saveProduct(Request $request)
@@ -39,7 +39,7 @@ class ProductController extends Controller
     public function viewProduct()
     {
         $products = Product::where('user_id', Auth::id())->get();
-        return view('public.product.view-product', compact('products'));
+        return view('user.product.view-product', compact('products'));
     }
 
     public function updateProduct(Request $request)

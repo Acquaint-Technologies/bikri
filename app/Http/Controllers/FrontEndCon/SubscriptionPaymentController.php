@@ -24,7 +24,7 @@ class SubscriptionPaymentController extends Controller
     public function index()
     {
         $controllerInfo = $this->controllerInfo;
-        return view('public.subscription.payment-index', compact('controllerInfo'));
+        return view('user.subscription.payment-index', compact('controllerInfo'));
     }
 
     public function store(Request $request)
@@ -56,6 +56,6 @@ class SubscriptionPaymentController extends Controller
             'user_id' => Auth::id(),
             'status' => 0,
         ])->get();
-        return view('public.subscription.pending', compact('controllerInfo', 'payments'));
+        return view('user.subscription.pending', compact('controllerInfo', 'payments'));
     }
 }

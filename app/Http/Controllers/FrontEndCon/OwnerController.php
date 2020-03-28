@@ -12,7 +12,7 @@ class OwnerController extends Controller
 {
     public function login()
     {
-        return view('public.Owners.owner-login');
+        return view('user.Owners.owner-login');
     }
 
 
@@ -100,6 +100,6 @@ class OwnerController extends Controller
 
     public function registration()
     {
-        return view('public.owners.owner-register');
+        return view('user.owners.owner-register');
     }
 }

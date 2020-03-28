@@ -1,4 +1,4 @@
-@extends('public.public-master')
+@extends('user.public-master')
 
 @section('body')
     <main class="main">
@@ -13,7 +13,7 @@
 
         <div class="page-header">
             <div class="container">
-                @include('public.messages.msg')
+                @include('user.messages.msg')
                 <h1>{{ $controllerInfo->pageTitle }}</h1>
             </div><!-- End .container -->
         </div><!-- End .page-header -->

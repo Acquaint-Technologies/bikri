@@ -1,4 +1,4 @@
-@extends('public.public-master')
+@extends('user.public-master')
 
 @section('body')
     <div class="container">

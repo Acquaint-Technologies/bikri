@@ -17,12 +17,13 @@ class ChangePasswordController extends Controller
      */
     public function index()
     {
-        return view('public.Owners.change-password');
+        return view('user.Owners.change-password');
     }
 
     /**
      * Show the application dashboard.
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function store(Request $request)

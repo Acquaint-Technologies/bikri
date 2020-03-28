@@ -12,7 +12,7 @@ class IndexController extends Controller
     public function home()
     {
         $sales = Sale::orderBy('id', 'DESC')->take(4)->where('user_id', Auth::id())->get();
-        return view('public.home.home', ['sales' => $sales]);
+        return view('user.home.home', ['sales' => $sales]);
     }
 
 }

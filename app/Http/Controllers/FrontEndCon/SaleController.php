@@ -16,7 +16,7 @@ class SaleController extends Controller
     {
         $products = Product::where('products.user_id', Auth::id())
             ->get();
-        return view('public.sale.add-sale', ['products' => $products]);
+        return view('user.sale.add-sale', ['products' => $products]);
     }
 
     public function fetch(Request $request)
@@ -64,7 +64,7 @@ class SaleController extends Controller
         $sales = Sale::with('product')
             ->where('user_id', Auth::id())
             ->get();
-        return view('public.sale.view-sale', compact('sales'));
+        return view('user.sale.view-sale', compact('sales'));
     }
 
     public function updateSale(Request $request)

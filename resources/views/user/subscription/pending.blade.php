@@ -1,4 +1,4 @@
-@extends('public.layouts.app')
+@extends('user.layouts.app')
 
 @section('content')
     <div class="row" id="subscription-payments">

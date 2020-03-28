@@ -55,7 +55,7 @@
 <body>
 <div class="page-wrapper">
     <!-- header -->
-    @include('public.include.header')
+    @include('user.include.header')
     <!-- End .header -->
 
     <!-- body -->
@@ -63,7 +63,7 @@
     <!-- End body -->
 
     <!-- footer -->
-    @include('public.include.footer')
+    @include('user.include.footer')
     <!-- End footer -->
 </div><!-- End .page-wrapper -->
 
