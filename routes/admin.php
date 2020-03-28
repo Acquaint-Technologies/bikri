@@ -41,7 +41,10 @@ Route::group(['prefix' => 'administrator'], function () {
         Route::post('/update-product-category', 'CategoryController@updateProductCategory')->name('update-category');
         Route::get('/delete-product-category/{id}', 'CategoryController@deleteProductCategory')->name('delete-category');
 
-        Route::resource('/owners', 'UserController');
-        Route::resource('/sales','SalesController');
+        Route::group(['as' => 'admin.'], function () {
+            Route::resource('/owners', 'UserController');
+            Route::resource('/sales', 'SalesController');
+            Route::resource('/subscription', 'SubscriptionController');
+        });
     });
 });

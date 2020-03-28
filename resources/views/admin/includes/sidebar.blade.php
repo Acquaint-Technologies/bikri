@@ -27,8 +27,6 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-
-
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#alpha" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa fa-folder" aria-hidden="true"></i>
@@ -42,7 +40,6 @@
             </div>
         </div>
     </li>
-
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#zero" aria-expanded="true" aria-controls="collapseTwo">
@@ -58,7 +55,6 @@
         </div>
     </li>
 
-
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#one" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
@@ -71,8 +67,6 @@
         </div>
     </li>
 
-
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#two" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa fa-user" aria-hidden="true"></i>
@@ -80,15 +74,12 @@
         </a>
         <div id="two" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('owners.create') }}">Add New Shop Owner</a>
-                <a class="collapse-item" href="{{ route('owners.index') }}">View Shop Owners</a>
+                <a class="collapse-item" href="{{ route('admin.owners.create') }}">Add New Shop Owner</a>
+                <a class="collapse-item" href="{{ route('admin.owners.index') }}">View Shop Owners</a>
             </div>
         </div>
     </li>
 
-
-
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#three" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa fa-list-alt" aria-hidden="true"></i>
@@ -96,13 +87,11 @@
         </a>
         <div id="three" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('sales.index') }}">View Sales List</a>
+                <a class="collapse-item" href="{{route('admin.sales.index') }}">View Sales List</a>
             </div>
         </div>
     </li>
 
-
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#four" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -110,15 +99,12 @@
         </a>
         <div id="four" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Add New Subscriber</a>
-                <a class="collapse-item" href="">View Subscriber List</a>
+{{--                <a class="collapse-item" href="{{ route('admin.subscription.create') }}">Add New Subscriber</a>--}}
+                <a class="collapse-item" href="{{ route('admin.subscription.index') }}">View Subscriber List</a>
             </div>
         </div>
     </li>
 
-
-
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#five" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa fa-fw fa-credit-card" aria-hidden="true"></i>
@@ -131,8 +117,6 @@
         </div>
     </li>
 
-
-    <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
@@ -140,8 +124,6 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-
-
                 <a class="collapse-item" href=""></a>
                 <a class="collapse-item" href=""></a>
             </div>
@@ -150,17 +132,6 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <!-- <div class="sidebar-heading">
-      Addons
-    </div> -->
-
-    <!-- Nav Item - Pages Collapse Menu -->
-
-
-
-
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
