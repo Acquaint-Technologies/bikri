@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Site</title>
+    <title>@yield('page_title') | Admin Panel</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
@@ -26,7 +26,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-@include('admin.includes.sidebar')
+    @include('admin.includes.sidebar')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -35,24 +35,23 @@
         <!-- Main Content -->
         <div id="content">
 
-            <!-- Topbar -->
-@include('admin.includes.topbar')
-            <!-- End of Topbar -->
+        <!-- Topbar -->
+        @include('admin.includes.topbar')
+        <!-- End of Topbar -->
 
-            <!-- Begin Page Content -->
-@yield('body')
-            <!-- /.container-fluid -->
+        <!-- Begin Page Content -->
+        @yield('body')
+        <!-- /.container-fluid -->
 
         </div>
         <!-- End of Main Content -->
 
         <!-- Footer -->
-@include('admin.includes.footer')
+        @include('admin.includes.footer')
         <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
-
 </div>
 <!-- End of Page Wrapper -->
 
@@ -74,8 +73,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="{{ route('admin.logout') }}"  onclick="event.preventDefault();
-                                                     document.getElementById('admin-logout-form').submit();">Logout</a>
+                <a class="btn btn-primary" href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('admin-logout-form').submit();">Logout</a>
                 <form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
@@ -94,12 +92,7 @@
 <!-- Custom scripts for all pages-->
 <script src="{{asset('admin/js/sb-admin-2.min.js')}}"></script>
 
-<!-- Page level plugins -->
-<script src="{{asset('admin/vendor/chart.js/Chart.min.js')}}"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
-<script src="{{asset('admin/js/demo/chart-pie-demo.js')}}"></script>
+@stack('scripts')
 
 </body>
 
